@@ -3,6 +3,7 @@
 
 ## Installation
 Download and install the demo.apk file on your Android device
+GDrive: https://drive.google.com/open?id=1Uh-CHsIou8OSpDRAW9pIOkPgy7uDQod4 
 
 
 ## Features covered:
