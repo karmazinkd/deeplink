@@ -31,17 +31,20 @@ class _LandingPageState extends State<LandingPage> {
     checkInitialDeeplink(_model);
   }
 
+  ///Listens to the clicks on deep link and opens corresponding page
   void listenToDeeplinkChanges(){
     _model.streamDeeplinkValues().listen((deeplink) {
       showDeeplinkPageIfNeeded(deeplink);
     });
   }
 
+  ///Checks whether the app was opened via deep link
   Future<void> checkInitialDeeplink(LandingPageViewModel model) async {
     String deeplink = await model.checkInitialDeeplink();
     showDeeplinkPageIfNeeded(deeplink);
   }
 
+  ///Opens the deep link page if the given [deeplink] is not null
   void showDeeplinkPageIfNeeded(String deeplink) {
     if (deeplink != null)
       Navigator.of(context)

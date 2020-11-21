@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:deeplinktest/data/auth_repository.dart';
 import 'package:deeplinktest/ui/components/login_button.dart';
 import 'package:deeplinktest/ui/utils/app_colors.dart';
+import 'package:deeplinktest/ui/utils/strings.dart';
 import 'package:deeplinktest/ui/utils/ui_utils.dart';
 import 'package:deeplinktest/view_models/sign_in_view_model.dart';
 import 'package:flutter/material.dart';
@@ -50,8 +51,7 @@ class _SignInPageState extends State<SignInPage> {
       child: Scaffold(
         key: _scaffoldKey,
         appBar: AppBar(
-          title: Text("Sign in"),
-          elevation: 0.0,
+          title: Text(Strings.signIn),
         ),
         body: SingleChildScrollView(
           child: Container(
@@ -76,7 +76,7 @@ class _SignInPageState extends State<SignInPage> {
               TextFormField(
                 key: _emailKey,
                 decoration: const InputDecoration(
-                    labelText: 'Email', hintText: "example@mail.com"),
+                    labelText: Strings.email, hintText: Strings.emailExample),
                 keyboardType: TextInputType.emailAddress,
                 validator: (_) => _model.validateEmail(),
                 onChanged: (value) {
@@ -87,7 +87,7 @@ class _SignInPageState extends State<SignInPage> {
               TextFormField(
                 key: _passwordKey,
                 decoration: const InputDecoration(
-                    labelText: 'Password', hintText: "8+ characters"),
+                    labelText: Strings.password, hintText: Strings.emailHint),
                 keyboardType: TextInputType.text,
                 validator: (_) => _model.validatePassword(),
                 obscureText: true,
@@ -103,7 +103,7 @@ class _SignInPageState extends State<SignInPage> {
                 backgroundColor: AppColors.loginButtonBlue,
                 backgroundDisabledColor: AppColors.loginButtonDisabledBlue,
                 textColor: Colors.white,
-                text: "Sign in",
+                text:  Strings.signIn,
                 buttonWidth: buttonWidth,
                 onTap: _model.isAllValid ? _onSignInPressed : null,
               )

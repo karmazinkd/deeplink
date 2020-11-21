@@ -7,6 +7,8 @@ class HomePageViewModel extends ChangeNotifier{
 
   AuthRepository _authRepository = GetIt.instance<AuthRepository>();
 
+  ///Returns the logged in user
+  ///Nullable
   User getUser(){
     return _authRepository.user;
   }

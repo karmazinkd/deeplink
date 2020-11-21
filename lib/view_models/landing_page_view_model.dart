@@ -31,6 +31,8 @@ class LandingPageViewModel extends ChangeNotifier {
     _listenToAuthState();
   }
 
+  ///Listens to the incoming events of clicking on registered deep links for this app
+  ///and emits a new deep link into the [_deepLinkValueStream] stream
   void _listenToDeeplinkChanges() {
     _deeplinkProviderSub = _deepLinkProvider.getDeepLinkStream().listen(
       (data) {
@@ -43,6 +45,7 @@ class LandingPageViewModel extends ChangeNotifier {
     );
   }
 
+  ///Listens to the auth state and updates [_authState] and notifies listeners on each change
   void _listenToAuthState(){
     _authStateSub = _authRepository.getAuthStateStream().listen(
           (state) {
@@ -55,6 +58,7 @@ class LandingPageViewModel extends ChangeNotifier {
     );
   }
 
+  ///Returns the initial value of deep link assigned if the app was opened via deep link
   ///Nullable
   Future<String> checkInitialDeeplink() async {
     return await _deepLinkProvider.fetchDeepLinkInitialValue();

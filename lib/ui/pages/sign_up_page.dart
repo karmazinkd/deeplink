@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:deeplinktest/data/auth_repository.dart';
 import 'package:deeplinktest/ui/components/login_button.dart';
 import 'package:deeplinktest/ui/utils/app_colors.dart';
+import 'package:deeplinktest/ui/utils/strings.dart';
 import 'package:deeplinktest/ui/utils/ui_utils.dart';
 import 'package:deeplinktest/view_models/sign_up_view_model.dart';
 import 'package:flutter/material.dart';
@@ -50,8 +51,7 @@ class _SignUpPageState extends State<SignUpPage> {
       child: Scaffold(
         key: _scaffoldKey,
         appBar: AppBar(
-          title: Text("Sign up"),
-          elevation: 0.0,
+          title: Text(Strings.signUp),
         ),
         body: SingleChildScrollView(
           child: Container(
@@ -76,7 +76,7 @@ class _SignUpPageState extends State<SignUpPage> {
               TextFormField(
                 key: _emailKey,
                 decoration: const InputDecoration(
-                    labelText: 'Email', hintText: "example@mail.com"),
+                    labelText: Strings.email, hintText: Strings.emailExample),
                 keyboardType: TextInputType.emailAddress,
                 validator: (_) => _model.validateEmail(),
                 onChanged: (value) {
@@ -87,7 +87,7 @@ class _SignUpPageState extends State<SignUpPage> {
               TextFormField(
                 key: _passwordKey,
                 decoration: const InputDecoration(
-                    labelText: 'Password', hintText: "8+ characters"),
+                    labelText: Strings.password, hintText: Strings.emailHint),
                 keyboardType: TextInputType.text,
                 validator: (_) => _model.validatePassword(),
                 obscureText: true,
@@ -99,7 +99,7 @@ class _SignUpPageState extends State<SignUpPage> {
               TextFormField(
                 key: _passwordConfirmKey,
                 decoration: const InputDecoration(
-                    labelText: 'Confirm password', hintText: ""),
+                    labelText: Strings.confirmPassword, hintText: ""),
                 keyboardType: TextInputType.text,
                 validator: (_) => _model.validateConfirmPassword(),
                 obscureText: true,
@@ -115,9 +115,9 @@ class _SignUpPageState extends State<SignUpPage> {
                 backgroundColor: AppColors.loginButtonBlue,
                 backgroundDisabledColor: AppColors.loginButtonDisabledBlue,
                 textColor: Colors.white,
-                text: "Sign up",
+                text: Strings.signUp,
                 buttonWidth: buttonWidth,
-                onTap: _model.isAllValid ? _onSignInPressed : null,
+                onTap: _model.isAllValid ? _onSignUpPressed : null,
               )
             ],
           ),
@@ -126,7 +126,7 @@ class _SignUpPageState extends State<SignUpPage> {
     );
   }
 
-  void _onSignInPressed() async{
+  void _onSignUpPressed() async{
     AuthResponse response = await _model.signUp();
     if(response.user != null)
       Navigator.of(context).pop();

@@ -13,6 +13,7 @@ class SignInViewModel extends ChangeNotifier{
   bool isAllValid = false;
   bool isLoading = false;
 
+  ///Performs a sign-in, updates UI with the result
   Future<AuthResponse> signIn() async{
     isLoading = true;
     notifyListeners();
@@ -30,26 +31,33 @@ class SignInViewModel extends ChangeNotifier{
     return _snackbarStreamController.stream;
   }
 
+  ///Validates [_emailInput] as an email
+  ///Returns `null` on successful validation, otherwise String with failure message
   ///Nullable
   String validateEmail(){
       return ValidateUtil.validateEmail(_emailInput);
   }
 
+  ///Updates email validation with the new value of the email and then performs validation
   void updateEmailInput(String email){
     _emailInput = email;
     checkIfAllInputValid();
   }
 
+  ///Validates the password set in [_passwordInput]
+  ///Returns `null` on successful validation, otherwise returns String with the failure message
   ///Nullable
   String validatePassword(){
     return ValidateUtil.validatePassword(_passwordInput);
   }
 
+  ///Updates password validation with the new value of the password and then performs validation
   void updatePasswordInput(String password){
     _passwordInput = password;
     checkIfAllInputValid();
   }
 
+  ///Checks validation for all input fields
   void checkIfAllInputValid(){
     if(validateEmail() == null && validatePassword() == null){
 
@@ -71,6 +79,7 @@ class SignInViewModel extends ChangeNotifier{
       _snackbarStreamController.add(message);
   }
 
+  ///Clears the user inputs, should be called when the page is disposed
   void clear(){
     _emailInput = "";
     _passwordInput = "";

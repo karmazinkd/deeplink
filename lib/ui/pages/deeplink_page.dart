@@ -1,5 +1,8 @@
 import 'package:deeplinktest/ui/utils/app_colors.dart';
+import 'package:deeplinktest/ui/utils/strings.dart';
 import 'package:flutter/material.dart';
+
+import 'package:deeplinktest/ui/utils/app_styles.dart';
 
 class DeepLinkPage extends StatelessWidget {
   static const routeName = "/deepLinkPage";
@@ -9,26 +12,25 @@ class DeepLinkPage extends StatelessWidget {
     String deeplink = ModalRoute.of(context).settings.arguments;
     return Scaffold(
       appBar: AppBar(
-        title: Text("Deep pink display page"),
-        elevation: 0.0,
+        title: Text(Strings.deepLinkDemoPage),
       ),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.stretch,
         children: <Widget>[
-          Icon(Icons.important_devices,
-              size: 50, color: AppColors.appBarBackButton),
+          Icon(Icons.link, size: 70, color: AppColors.loginButtonBlue),
           SizedBox(
             height: 12.0,
           ),
-          Padding(
-            padding: const EdgeInsets.all(36.0),
-            child: Text(
-              "DEEP LINK: $deeplink",
-              textAlign: TextAlign.center,
-              style: TextStyle(
-                fontSize: 18,
-              ),
-            ),
+          Text(
+            Strings.deepLinkReceived,
+            textAlign: TextAlign.center,
+            style: AppStyles.title,
+          ),
+          Text(
+            deeplink,
+            textAlign: TextAlign.center,
+            style: AppStyles.content,
           ),
         ],
       ),

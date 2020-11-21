@@ -7,6 +7,7 @@ import 'package:deeplinktest/ui/pages/login_page.dart';
 import 'package:deeplinktest/ui/pages/sign_up_page.dart';
 import 'package:deeplinktest/ui/pages/sign_in_page.dart';
 import 'package:deeplinktest/ui/utils/app_styles.dart';
+import 'package:deeplinktest/ui/utils/strings.dart';
 import 'package:deeplinktest/view_models/home_page_view_model.dart';
 import 'package:deeplinktest/view_models/landing_page_view_model.dart';
 import 'package:deeplinktest/view_models/sign_in_view_model.dart';
@@ -17,7 +18,7 @@ import 'package:provider/provider.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
-//needed for async initialization if it's prior to runApp()
+  //needed for async initialization if it's prior to runApp()
 
   //set up locators
   GetIt.I.registerSingleton<DeepLinkRepository>(DeepLinkRepository());
@@ -31,22 +32,13 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
-        ChangeNotifierProvider(
-          create: (_) => SignInViewModel(),
-        ),
-        ChangeNotifierProvider(
-          create: (_) => SignUpViewModel(),
-        ),
-        ChangeNotifierProvider(
-          create: (_) => HomePageViewModel(),
-        ),
-        ChangeNotifierProvider(
-          create: (_) => LandingPageViewModel(),
-          lazy: false,
-        ),
+        ChangeNotifierProvider(create: (_) => SignInViewModel()),
+        ChangeNotifierProvider(create: (_) => SignUpViewModel()),
+        ChangeNotifierProvider(create: (_) => HomePageViewModel()),
+        ChangeNotifierProvider(create: (_) => LandingPageViewModel(), lazy: false),
       ],
       child: MaterialApp(
-        title: 'Deeplink Demo',
+        title: Strings.appTitle,
         theme: AppStyles.buildLightTheme(context),
         home: LandingPage(),
         routes: <String, WidgetBuilder>{
