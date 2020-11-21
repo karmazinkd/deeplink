@@ -1,20 +1,21 @@
 # deeplinktest
 
-
-## Installation
-Download and install the demo.apk file on your Android device
-GDrive: https://drive.google.com/open?id=1Uh-CHsIou8OSpDRAW9pIOkPgy7uDQod4 
-
-
 ## Features covered:
-
-- Sign in
-- Sign up with email
-- Listening for deeplink events (clicks) for the following scheme:
+- Clean architecture 
+- MVVM pattern
+- Provider + ChangeNotifier State Management 
+- Sign in and Sign up
+- Deep links (listens for deeplink events (clicks) for the following scheme):
 
 ```
 scheme: https
 host: addictivelearning.app
-for example:
-https://addictivelearning.app/deep/link/path
+example: https://addictivelearning.app/deep/link/path 
 ```
+
+## How to demo:
+1. Download and install the demo.apk file on your Android device
+GDrive: https://drive.google.com/file/d/1h1iDcYzpJFbtqqJvXJD1NZlfMGez2r5x/view?usp=sharing 
+
+2. Paste this link in your notes app or any messenger app on your Android device - "https://addictivelearning.app/deep/link/path"
+3. Tap on this link. The deeplink demo app will consume this event and will open itself up.
